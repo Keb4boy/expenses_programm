@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "financialprogramm"
+version = "0.1.0"
+description = ""
+authors = ["keb4boy <Grecha_AI_2005@icloud.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+psycopg2-binary = "^2.9.5"
+python-dotenv = "^1.0.0"
+flask = "^2.2.3"
+gunicorn = "^20.1.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
