@@ -1,25 +1,28 @@
 from financialprogramm.db import insert_all, insert_categories, insert_names, select_finance
-from flask import Flask 
-from flask import request
+from flask import Flask, request, render_template, redirect, url_for
+
 app = Flask(__name__)
 
-@app.route('/', methods=['POST', 'GET'])
-def values():
-    if request.method == 'POST':
-        f = request.form.to_dict()
-        data = (f[date], f[categories], f[name], f[amount])
-    return template('home.html')
+@app.route("/")
+def root(data='Hello, world'):
+    return render_template("root.html", data=data)
+
+@app.route("/url", methods=["POST"])
+def button():
+    return redirect(url_for("root"))
 
 
-@app.route('/categories', methods=['POST', 'GET'])
-def categories():
-    return template('categories.html')
+@app.route("/form")
+def templates():
+    return render_template("button.html")
 
-
-@app.route('/amount', methods=['POST', 'GET'])
-def amount():
-    return template('amount.html')
-
+@app.route("/urls", methods=["GET", "POST"])
+def urls():
+    if request.method == "POST":
+        return redirect(url_for("root", data="hi"))
+    else:
+        return redirect(url_for("root"))
+        
 
 if __name__ == '__main__':
     app()
