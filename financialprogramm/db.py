@@ -46,8 +46,7 @@ def insert_categories(value):
     
     conn = connection()
     cur = conn.cursor()
-    cur.execute(f"INSERT INTO categories (category) VALUES (%s)", 
-    [value])
+    cur.execute(f"INSERT INTO categories (category) VALUES (%s)", [value])
     conn.commit()
     conn.close()
 
